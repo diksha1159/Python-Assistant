@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %} | Echoscript</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(90deg, #3F2B96 0%, #A8C0FF 100%);
+
+            margin: 0;
+            padding: 0;
+            color: #333; /* Default text color */
+        }
+        .navbar {
+            background-color: #f4e1d2; /* Navbar background color - Light blue */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            justify-content: center; /* Center the content horizontally */
+            padding: 20px 0; /* Adjusted padding */
+        }
+        
+        .navbar-brand, .nav-link {
+            color: #fff; /* Navbar text color - White */
+            transition: color 0.3s ease-in-out;
+            font-size: 20px; /* Adjusted font size */
+            font-weight: bold; /* Added font weight */
+        }
+        
+        .navbar-brand:hover, .nav-link:hover {
+            color: #ecf0f1; /* Navbar text color on hover - Light gray */
+        }
+        
+        .main-content {
+            padding: 50px 20px;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat; /* Prevent background from repeating */
+        }
+        .btn-primary {
+            background-color: #ff6600; /* Orange */
+            border-color: #ff6600; /* Orange */
+        }
+        .btn-primary:hover {
+            background-color: #e64d00; /* Darker shade of Orange */
+            border-color: #e64d00; /* Darker shade of Orange */
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/">Echoscript</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">To do list</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/services">Pomodoro </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact">Notes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/summary">summary</a>
+            </li>
+           
+        </ul>
+    </div>
+</nav>
+
+<div class="main-content" style="background-image: url('{% block background_image %}{% endblock background_image %}')">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show my-3" role="alert">
+                <strong>{{ message }}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% block body %}{% endblock body %}
+</div>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

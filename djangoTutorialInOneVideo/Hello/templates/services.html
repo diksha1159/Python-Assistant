@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <style>
+        /* Additional CSS styles specific to the Pomodoro Timer section */
+        .pomodoro-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            min-height: calc(100vh - 56px); /* Adjust based on your navbar height */
+        }
+
+        .pomodoro-title {
+            color: green;
+            margin-bottom: 20px;
+        }
+
+        .timer-circle {
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            color: crimson;
+            border: 8px solid #3498db;
+        }
+
+        .control-buttons {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .control-buttons button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .control-buttons button:hover {
+            background-color: #266094;
+            transition: background-color 0.3s;
+        }
+    </style>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Echoscript Homepage | Echoscript</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!-- Custom CSS -->
+        <style>
+            body {
+                background-color: #f0f8ff;
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+            .navbar {
+                background-color: transparent;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                justify-content: center; /* Center the content horizontally */
+            }
+            .navbar-brand, .nav-link {
+                color: #2c3e50;
+                transition: color 0.3s ease-in-out;
+            }
+            .navbar-brand:hover, .nav-link:hover {
+                color: #2980b9;
+            }
+            .jumbotron {
+                background-color: #dcedc1;
+                color: #333;
+                padding: 100px 0;
+                border-radius: 0;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .jumbotron h1 {
+                font-size: 48px;
+                font-weight: bold;
+            }
+            .jumbotron p {
+                font-size: 24px;
+            }
+            .jumbotron .btn-primary {
+                background-color: #45b649;
+                border-color: #2ecc71;
+                border-radius: 5px;
+                font-size: 18px;
+                padding: 10px 40px;
+                margin-top: 30px;
+                font-weight: bold;
+            }
+            .jumbotron .btn-primary:hover {
+                background-color: #90cea1;
+                border-color: #27ae60;
+            }
+            .card {
+                transition: transform 0.3s ease-in-out;
+                background-color: #fae3d9;
+                border-radius: 15px;
+                box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            }
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
+            }
+            .card-img-top {
+                border-top-left-radius: 15px;
+                border-top-right-radius: 15px;
+                height: 200px;
+                object-fit: cover;
+            }
+            .card-title {
+                color: #e74c3c;
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 20px;
+            }
+            .card-text {
+                color: #34495e;
+                font-size: 18px;
+            }
+            .btn-primary {
+                background-color: #a6c1ee;
+                border-color: #e74c3c;
+                border-radius: 5px;
+                font-weight: bold;
+            }
+            .btn-primary:hover {
+                background-color: #fbc2eb;
+                border-color: #c0392b;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="/">Echoscript</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto"> <!-- Change ml-auto to mx-auto to center the navbar links -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">To Do List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/services">Pomodoro Timer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Notes</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/summary">summary</a>
+                        </li>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="jumbotron text-center">
+            <div class="container">
+            </div>
+    
+            <audio id="alertSound" src="C:\Users\hongp\Downloads\djangoTutorialInOneVideo\Hello\templates\ping.mp3"></audio>
+
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0" role="alert">
+                <strong>{{ message }}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% block body %}
+    <section class="pomodoro-section">
+        <h1 class="pomodoro-title">Pomodoro Timer</h1>
+        <div class="timer-circle" id="timer">15:00</div>
+        <div class="control-buttons">
+            <button class="mr-2" onclick="togglePauseResume()">Pause</button>
+            <button class="mr-2" onclick="restartTimer()">Restart</button>
+            <button onclick="chooseTime()">Choose Time</button>
+        </div>
+        <section class="motivational-messages">
+            <div id="motivationalMessage" class="motivational-message d-none"></div>
+        </section>
+                
+    </section>
+    {% endblock %}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script>
+    let timer;
+    let minutes = 15;
+    let seconds = 0;
+    let isPaused = false;
+    let enteredTime = null;
+
+    function startTimer() {
+        timer = setInterval(updateTimer, 1000);
+    }
+
+    function updateTimer() {
+        const timerElement = document.getElementById('timer');
+        timerElement.textContent = formatTime(minutes, seconds);
+
+        if (minutes === 0 && seconds === 0) {
+            clearInterval(timer);
+            alert('Time is up! Take a break.');
+            document.getElementById('alertSound').play(); // Add this line to play the sound
+        } else if (!isPaused) {
+            if (seconds > 0) {
+                seconds--;
+            } else {
+                seconds = 59;
+                minutes--;
+            }
+        }
+    }
+
+    function formatTime(minutes, seconds) {
+        return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }
+
+    function togglePauseResume() {
+        const pauseResumeButton = document.querySelector('.control-buttons button');
+        isPaused = !isPaused;
+
+        if (isPaused) {
+            clearInterval(timer);
+            pauseResumeButton.textContent = 'Resume';
+        } else {
+            startTimer();
+            pauseResumeButton.textContent = 'Pause';
+        }
+    }
+
+    function restartTimer() {
+        clearInterval(timer);
+        minutes = enteredTime || 15;
+        seconds = 0;
+        isPaused = false;
+        const timerElement = document.getElementById('timer');
+        timerElement.textContent = formatTime(minutes, seconds);
+        const pauseResumeButton = document.querySelector('.control-buttons button');
+        pauseResumeButton.textContent = 'Pause';
+        startTimer();
+    }
+
+    function chooseTime() {
+        const newTime = prompt('Enter new time in minutes:');
+        if (!isNaN(newTime) && newTime > 0) {
+            enteredTime = parseInt(newTime);
+            minutes = enteredTime;
+            seconds = 0;
+            isPaused = false;
+            const timerElement = document.getElementById('timer');
+            timerElement.textContent = formatTime(minutes, seconds);
+            clearInterval(timer);
+            const pauseResumeButton = document.querySelector('.control-buttons button');
+            pauseResumeButton.textContent = 'Pause';
+            startTimer();
+        } else {
+            alert('Invalid input. Please enter a valid number greater than 0.');
+        }
+    }
+
+    startTimer();
+
+    
+
+
+</script>

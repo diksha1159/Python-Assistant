@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+
+{% block title %}Echoscript | Home{% endblock title %}
+
+{% block extra_css %}
+<style>
+  body {
+    background-color: #f9f9f9; /* Light gray background */
+    color: #333; /* Default text color */
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #2980b9; /* Dark blue navbar */
+}
+
+.navbar-brand {
+    color: #fff !important; /* White color for navbar brand */
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.navbar-nav .nav-link {
+    color: #fff !important; /* White color for navbar links */
+}
+
+.jumbotron {
+    background-color: #3498db; /* Blue jumbotron */
+    color: #fff;
+    padding: 20px 0; /* Adjusted padding */
+    border-radius: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.jumbotron h1 {
+    font-size: 28px; /* Reduced font size */
+    font-weight: bold;
+}
+
+.jumbotron p {
+    font-size: 14px; /* Reduced font size */
+    font-family: "Times New Roman", Times, serif;
+}
+
+.cursive {
+    font-family: cursive; /* Apply cursive font to specific elements */
+}
+
+.card {
+    background-color: #fff; /* White card background */
+    border-radius: 10px; /* Reduced border radius */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Reduced box shadow */
+    transition: transform 0.3s ease-in-out;
+}
+
+.card-body {
+    height: 220px; /* Adjusted height for all card bodies */
+    overflow: hidden;
+}
+
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    color: #e74c3c; /* Red card title */
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.card-text {
+    background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);; /* Dark gray card text */
+    font-size: 18px;
+}
+
+.btn-primary {
+    background-color: #e74c3c; /* Red button */
+    border-color: #e74c3c;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #c0392b; /* Darker red on hover */
+    border-color: #c0392b;
+}
+
+/* Custom styling for the study environment section */
+.study-environment {
+    background-color: #fff; /* White background */
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.study-environment h2 {
+    color: #2c3e50; /* Dark blue heading */
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.study-environment p {
+    color: #34495e; /* Dark gray text */
+    font-size: 20px;
+}
+
+/* Additional background color */
+.page-background {
+    background-color: #ecf0f1; /* Light gray background color */
+}
+
+/* Set all card bodies to have the same height */
+.card-body {
+    height: 300px; /* Adjusted height for all card bodies */
+    overflow: hidden;
+}
+</style>
+{% endblock extra_css %}
+
+{% block body %}
+<div class="jumbotron text-center">
+    <div class="container">
+        <h1>Welcome to <span class="cursive">Echoscript!</span></h1>
+        <p class="lead">Step into our vibrant study environment and elevate your learning journey.</p>
+    </div>
+</div>
+
+
+<div class="container my-5 study-environment page-background">
+    <h2>Explore Your Study Environment</h2>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card h-100 mb-4 shadow-sm" style="background-color: #ffffff;">
+                <img src="https://i.pinimg.com/564x/a3/ff/e8/a3ffe8bd2156a58aff35ecaf947b8647.jpg" class="card-img-top" alt="Notes">
+                <div class="card-body">
+                    <h5 class="card-title" style="color: #6c5ce7;">Notes</h5>
+                    <p class="card-text">Organize your thoughts and ideas with our note-taking feature.</p>
+                    <a href="/contact" class="btn btn-primary" style="background-color: #d63031;">Take Notes</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card h-100 mb-4 shadow-sm" style="background-color:#ffffff;">
+                <img src="https://i.pinimg.com/564x/fa/c3/91/fac391d5ab9371ffecd2c1e89d367e6b.jpg" class="card-img-top" alt="Books">
+                <div class="card-body">
+                    <h5 class="card-title" style="color: #6c5ce7;">To-Do List</h5>
+                    <p class="card-text">Stay organized and boost productivity with our interactive to-do list.</p>
+                    <a href="/about" class="btn btn-primary" style="background-color: #d63031;">Get Started</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card h-100 mb-4 shadow-sm" style="background-color: #ffffff;">
+                <img src="https://i.pinimg.com/564x/b6/99/7a/b6997afa486a43cde24b5347abf34292.jpg" class="card-img-top" alt="Classroom">
+                <div class="card-body">
+                    <h5 class="card-title" style="color:#6c5ce7;">Pomodoro Timer</h5>
+                    <p class="card-text">Have a Break! in a organized way.Using Pomodoro Timer</p>
+                    <a href="/services" class="btn btn-primary" style="background-color: #d63031;">Try Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card h-100 mb-4 shadow-sm" style="background-color: #ffffff;">
+                <img src="https://i.pinimg.com/564x/56/05/86/560586fe97ed1324476509495975bdcf.jpg" class="card-img-top" alt="Books">
+                <div class="card-body">
+                    <h5 class="card-title" style="color: #6c5ce7;">Summary</h5>
+                    <p class="card-text">Summarize for better understanding.</p>
+                    <a href="/summary" class="btn btn-primary" style="background-color: #d63031;">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <!-- Python Assistant Card -->
+        <div class="card h-100 mb-4 shadow-sm mt-3" style="background-color: #ffffff;">
+            <img src="https://i.pinimg.com/564x/0b/52/f2/0b52f2d189fc2692ad1bf51effbea177.jpg" class="card-img-top" alt="Books">
+            <div class="card-body">
+                <h5 class="card-title" style="color: #6c5ce7;">Python Assistant</h5>
+                <p class="card-text">Get assistance with Python programming.</p>
+                <!-- Button linking to Python Assistant page -->
+                <a href="https://autocodepro.com/" class="btn btn-primary" style="background-color: #d63031;">Get Started</a>
+           
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

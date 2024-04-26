@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact{% endblock title %}
+
+{% block extra_css %}
+<style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Light gray background */
+            background-image: url('https://images.unsplash.com/photo-1532153354457-5fbe1a3bb0b4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y3J1c2hlZCUyMHBhcGVyJTIwdmVydGljYWx8ZW58MHx8MHx8fDA%3D');
+            background-size: cover;
+            background-position: center;
+        }
+
+    .container {
+        padding: 50px; /* Add padding for spacing */
+        background-color: #ffffff; /* White background color */
+        border-radius: 10px; /* Add rounded corners */
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    }
+
+    h1 {
+        color: #007bff; /* Blue color for headings */
+        text-align: center; /* Center align the heading */
+        margin-bottom: 30px; /* Add spacing below the heading */
+    }
+
+    label {
+        color: #555; /* Dark gray color for labels */
+    }
+
+    .form-control {
+        border-color: #ccc; /* Light gray border color */
+    }
+
+    .btn-primary {
+        background-color: #ff6347; /* Red color for submit button */
+        border-color: #ff6347; /* Darker red border color */
+        color: #fff; /* White text color */
+        width: 100%; /* Make the button full width */
+    }
+
+    .btn-primary:hover {
+        background-color: #ff473d; /* Darker red color on hover */
+        border-color: #ff473d; /* Darker border color on hover */
+    }
+</style>
+{% endblock extra_css %}
+
+{% block body %}
+<div class="container">
+    <h1>Notes Section</h1>
+    <form method="post" action="/contact">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name of the Subject</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your notes">
+        </div>
+
+        <div class="form-group">
+            <label for="desc">Add Your Notes</label>
+            <textarea class="form-control" id="desc" rows="3" name="desc"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+</div>
+{% endblock body %}

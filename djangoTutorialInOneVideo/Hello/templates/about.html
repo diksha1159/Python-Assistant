@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+
+{% block title %}To-Do List{% endblock title %}
+
+{% block extra_css %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #FFB6C1; /* Light gray background */
+        background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTEhIVFhUWFxUVFhcYFhUXGBcWFRgXFxcVFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGxAQGzAlHyUrLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIALsBCgMBEQACEQEDEQH/x...); /* Base64 encoded image */
+        background-size: cover;
+        background-position: center;
+    }
+    
+
+    .card {
+        background-color: rgba(255, 255, 255, 0.9); /* White card background with opacity */
+        border-radius: 15px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        color: #3399ff;
+    }
+
+    .list-group {
+        list-style: none;
+        padding: 0;
+    }
+
+    .list-group-item {
+        border: none;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        transition: all 0.2s ease-in-out;
+        background-color: #ffffff;
+    }
+
+    .list-group-item:hover {
+        background-color: #e0f2f1;
+    }
+
+    .form-control {
+        border-radius: 5px;
+    }
+
+    .btn-primary {
+        border-radius: 5px;
+        background-color: #3399ff;
+    }
+
+    .btn-delete {
+        border-radius: 50%;
+        font-size: 0.75rem;
+        padding: 0.3rem 0.5rem;
+    }
+
+    @media (max-width: 576px) {
+        .card-body {
+            padding: 20px;
+        }
+    }
+
+    /* Progress Bar */
+    .progress {
+        height: 20px;
+        border-radius: 10px;
+        background-color: #f2f2f2;
+        box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+        margin-bottom: 20px; /* Added margin for spacing */
+    }
+    
+    .progress-bar {
+        border-radius: 10px;
+        background-color: #3399ff; /* Progress bar color */
+    }
+
+    /* Motivational Message */
+    #motivationalMessage {
+        margin-top: 20px; /* Added margin for spacing */
+        color: #fff; /* White text color */
+        background-color: #66cccc; /* Light blue background */
+        border-radius: 5px;
+        padding: 10px;
+    }
+</style>
+{% endblock extra_css %}
+
+
+{% block body %}
+
+<section class="vh-100 gradient-custom position-relative">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-8">
+                <div class="card position-relative">
+                    <div class="card-body p-5">
+                        <h1 class="mb-4">To-Do List</h1>
+                        <form class="d-flex justify-content-center align-items-center mb-4">
+                            <div class="form-outline flex-fill">
+                                <input type="text" id="newTodo" class="form-control" placeholder="New task..." />
+                            </div>
+                            <button type="button" class="btn btn-primary ms-2" onclick="addTodo()">Add</button>
+                        </form>
+
+                        <!-- Todo list -->
+                        <ul id="todoList" class="list-group mb-4">
+                            <!-- Existing todo items will be added here -->
+                        </ul>
+
+                        <!-- Motivational message -->
+                        <div id="motivationalMessage" class="alert alert-success d-none" role="alert">
+                            Great job! You completed a task. Keep up the good work!
+                        </div>
+                        
+                        <!-- Progress Bar -->
+                        <div class="progress mb-4">
+                            <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function addTodo() {
+        // Get the input value
+        var todoText = document.getElementById("newTodo").value;
+    
+        if (todoText.trim() === "") {
+            alert("Please enter a todo item.");
+            return;
+        }
+    
+        // Create list item element
+        var listItem = document.createElement("li");
+        listItem.className = "list-group-item d-flex justify-content-between align-items-center";
+    
+        // Create checkbox
+        var checkbox = document.createElement("input");
+        checkbox.className = "form-check-input me-3";
+        checkbox.type = "checkbox";
+        checkbox.onchange = function() {
+            if (this.checked) {
+                this.parentNode.parentNode.querySelector('.todo-text').style.textDecoration = 'line-through';
+                showMotivationalMessage();
+                updateProgress(); // Update progress when a task is completed
+            } else {
+                this.parentNode.parentNode.querySelector('.todo-text').style.textDecoration = 'none';
+                updateProgress(); // Update progress when a task is unchecked
+            }
+        };
+        listItem.appendChild(checkbox);
+    
+        // Create todo text
+        var todoTextElement = document.createElement("span");
+        todoTextElement.className = "todo-text lead";
+        todoTextElement.textContent = todoText;
+        listItem.appendChild(todoTextElement);
+    
+        // Add delete button
+        var deleteButton = document.createElement("button");
+        deleteButton.className = "btn btn-delete btn-danger";
+        deleteButton.textContent = "X";
+        deleteButton.onclick = function() {
+            this.parentNode.remove();
+            updateProgress(); // Update progress when a task is deleted
+        };
+        listItem.appendChild(deleteButton);
+    
+        // Add list item to the list
+        document.getElementById("todoList").appendChild(listItem);
+    
+        // Update progress
+        updateProgress();
+    
+        // Clear input field
+        document.getElementById("newTodo").value = "";
+    }
+    
+    function updateProgress() {
+        var totalTasks = document.querySelectorAll('.list-group-item').length;
+        var completedTasks = document.querySelectorAll('.list-group-item input[type="checkbox"]:checked').length;
+        var progress = (completedTasks / totalTasks) * 100;
+        document.getElementById('progressBar').style.width = progress + '%';
+        document.getElementById('progressBar').setAttribute('aria-valuenow', progress);
+    }
+    
+    function showMotivationalMessage() {
+        var messageElement = document.getElementById("motivationalMessage");
+        messageElement.classList.remove("d-none");
+
+        setTimeout(function() {
+            messageElement.classList.add("d-none");
+        }, 3000); // Hide the message after 3 seconds
+    }
+</script>
+
+{% endblock %}
